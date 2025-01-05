@@ -5,6 +5,10 @@
       fetch="https://github.com/PixelOS-AOSP"
            revision="refs/heads/fifteen-qpr1" />
 
+  <remote  name="PixelOS-15"
+      fetch="https://github.com/PixelOS-Fifteen"
+           revision="refs/heads/fifteen-qpr1" />
+
   <remote  name="PixelOS-Gitlab"
            fetch="https://gitlab.com/PixelOS-AOSP"
            revision="refs/heads/fifteen" />
@@ -32,13 +36,56 @@
   <project path="packages/services/Telecomm" name="packages_services_Telecomm" remote="PixelOS" />
   <project path="system/core" name="system_core" groups="pdk" remote="PixelOS" />
 
+  <!-- Hardware -->
+  <project path="hardware/qcom-caf/common" name="hardware_qcom-caf_common" groups="qcom" revision="fifteen" remote="PixelOS-15" >
+    <!-- Add guard for AOSP hardware/qcom dir -->
+    <linkfile src="os_pickup_aosp.mk" dest="hardware/qcom/Android.mk" />
+    <!-- Add guards for CLO repositories -->
+    <linkfile src="os_pickup_sepolicy_vndr.mk" dest="device/qcom/sepolicy_vndr/SEPolicy.mk" />
+    <linkfile src="os_pickup_qssi.bp" dest="hardware/qcom-caf/msm8953/Android.bp" />
+    <linkfile src="os_pickup.mk" dest="hardware/qcom-caf/msm8953/Android.mk" />
+    <linkfile src="os_pickup.bp" dest="hardware/qcom-caf/msm8996/Android.bp" />
+    <linkfile src="os_pickup.mk" dest="hardware/qcom-caf/msm8996/Android.mk" />
+    <linkfile src="os_pickup.bp" dest="hardware/qcom-caf/msm8998/Android.bp" />
+    <linkfile src="os_pickup.mk" dest="hardware/qcom-caf/msm8998/Android.mk" />
+    <linkfile src="os_pickup_qssi.bp" dest="hardware/qcom-caf/sdm660/Android.bp" />
+    <linkfile src="os_pickup.mk" dest="hardware/qcom-caf/sdm660/Android.mk" />
+    <linkfile src="os_pickup_qssi.bp" dest="hardware/qcom-caf/sdm845/Android.bp" />
+    <linkfile src="os_pickup.mk" dest="hardware/qcom-caf/sdm845/Android.mk" />
+    <linkfile src="os_pickup_qssi.bp" dest="hardware/qcom-caf/sm8150/Android.bp" />
+    <linkfile src="os_pickup.mk" dest="hardware/qcom-caf/sm8150/Android.mk" />
+    <linkfile src="os_pickup_qssi.bp" dest="hardware/qcom-caf/sm8250/Android.bp" />
+    <linkfile src="os_pickup.mk" dest="hardware/qcom-caf/sm8250/Android.mk" />
+    <linkfile src="os_pickup_qssi.bp" dest="hardware/qcom-caf/sm8350/Android.bp" />
+    <linkfile src="os_pickup.mk" dest="hardware/qcom-caf/sm8350/Android.mk" />
+    <linkfile src="os_pickup.bp" dest="kernel/google/gs101/private/google-modules/Android.bp" />
+    <linkfile src="os_pickup_audio-ar.mk" dest="hardware/qcom-caf/sm8450/audio/Android.mk" />
+    <linkfile src="os_pickup_qssi.bp" dest="hardware/qcom-caf/sm8450/Android.bp" />
+    <linkfile src="os_pickup.mk" dest="hardware/qcom-caf/sm8450/Android.mk" />
+    <linkfile src="os_pickup_audio-ar.mk" dest="hardware/qcom-caf/sm8550/audio/Android.mk" />
+    <linkfile src="os_pickup_qssi.bp" dest="hardware/qcom-caf/sm8550/Android.bp" />
+    <linkfile src="os_pickup.mk" dest="hardware/qcom-caf/sm8550/Android.mk" />
+    <linkfile src="os_pickup_audio-ar.mk" dest="hardware/qcom-caf/sm8650/audio/Android.mk" />
+    <linkfile src="os_pickup_qssi.bp" dest="hardware/qcom-caf/sm8650/Android.bp" />
+    <linkfile src="os_pickup.mk" dest="hardware/qcom-caf/sm8650/Android.mk" />
+  </project>
+  <project path="hardware/qcom-caf/sm8650/audio/agm" name="vendor_qcom_opensource_agm" groups="qcom,lanai-audio" revision="fifteen-caf-sm8650" remote="PixelOS-15" />
+  <project path="hardware/qcom-caf/sm8650/audio/pal" name="vendor_qcom_opensource_arpal-lx" groups="qcom,lanai-audio" revision="fifteen-caf-sm8650" remote="PixelOS-15" />
+  <project path="hardware/qcom-caf/sm8650/audio/primary-hal" name="hardware_qcom_audio-ar" groups="qcom,lanai-audio" revision="fifteen-caf-sm8650" remote="PixelOS-15" />
+  <project path="hardware/qcom-caf/sm8650/data-ipa-cfg-mgr" name="vendor_qcom_opensource_data-ipa-cfg-mgr" groups="qcom,lanai-vendor" revision="fifteen-caf-sm8650" remote="PixelOS-15" />
+  <project path="hardware/qcom-caf/sm8650/dataipa" name="vendor_qcom_opensource_dataipa" groups="qcom,lanai-vendor" revision="fifteen-caf-sm8650" remote="PixelOS-15" />
+  <project path="hardware/qcom-caf/sm8650/display" name="hardware_qcom_display" groups="qcom" revision="fifteen-caf-sm8650" remote="PixelOS-15" />
+  <project path="hardware/qcom-caf/sm8650/media" name="hardware_qcom_media" groups="qcom,lanai-vendor" revision="fifteen-caf-sm8650" remote="PixelOS-15" />
+
   <!-- Custom vendor additions -->
   <project path="device/lineage/sepolicy" name="device_lineage_sepolicy" remote="PixelOS" />
+  <project path="device/qcom/sepolicy_vndr/sm8650" name="device_qcom_sepolicy_vndr" groups="qcom,lanai-vendor" revision="fifteen-caf-sm8650" remote="PixelOS-15" />
   <project path="packages/apps/ParanoidSense" name="packages_apps_ParanoidSense" remote="PixelOS" />
   <project path="packages/apps/TouchGestures" name="packages_apps_TouchGestures" remote="PixelOS" />
   <project path="vendor/aosp" name="vendor_aosp" remote="PixelOS" />
   <project path="vendor/custom-preference" name="vendor_custom-preference" remote="PixelOS" />
   <project path="vendor/gms" name="vendor_gms" clone-depth="1" remote="PixelOS-Gitlab" />
   <project path="vendor/google/overlays/ThemeIcons" name="vendor_google_overlays_ThemeIcons" remote="PixelOS" />
+  <project path="vendor/qcom/opensource/vibrator" name="vendor_qcom_opensource_vibrator" groups="qcom,lanai-vendor" revision="fifteen" remote="PixelOS-15" />
 
 </manifest>
